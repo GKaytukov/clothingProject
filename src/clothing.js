@@ -7,18 +7,18 @@ export function createClothing(req, res) {
     // add a new doc to clothing collection
     db.collection('clothing').add(req.body)
     // send back a response(err / not)
-        .then(doc => res.status(201).send({ success: true, message: 'Created clothing: ' + doc.id }))
+        .then(doc => res.status(201).send({ success: true, message: 'Created clothing: ' + doc.id })) //To create clothing collection  
         .catch(err => res.send.status(500).send({success: false, message: err}))
 
 }
 
-export function getAllClothing(req, res) {
-    const db = dbConnect()
-    db.collection('clothing').get()
+export function getAllClothing(req, res) { //To get the whole list of clothing
+    const db = dbConnect() //Connect to db 
+    db.collection('clothing').get()  // Get me the clothing 
         .then(collection => {
-            const clothingList = collection.docs.map(doc => doc.data())
-            res.send(clothingList)
-        })
+            const clothingList = collection.docs.map(doc => doc.data()) //Map means we are going one by one 
+            res.send(clothingList) 
+        }) // Send me the whole list in a doc data 
         .catch(err => res.send.status(500).send({success: false, message: err}))
 }
 

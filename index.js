@@ -1,7 +1,7 @@
 import express from 'express'
 import { createClothing, getAllClothing, updateClothing } from './src/clothing.js'
 
-const app = express()
+const app = express() //Our app will use express the api 
 app.use(express.json())
 
 app.post('/clothing', createClothing)
